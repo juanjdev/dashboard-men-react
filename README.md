@@ -48,7 +48,7 @@ Lo que hace este comando es habilitar un servicio web en la dirección [localhos
 > **NOTA: Tenga en cuenta que para visualizar correctamente los datos, debe haber ejecutado previamente el servidor de Django en la sección anterior del presente documento. De lo contrario, el servicio web no
 hallará datos para consumir.**
 
-## Endpoints de la aplicación
+## URLs de acceso de la aplicación
 La aplicación está dividida por cada uno de los endpoints correspondientes a cada una de las preguntas. 
 
 Las peticiones pueden verse del siguiente estilo: 
