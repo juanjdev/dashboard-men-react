@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
+import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import FirstQuestion from './pages/FirstQuestion'
+import SecondQuestion from './pages/SecondQuestion'
+import ThirdQuestion from './pages/ThirdQuestion'
+import FourthQuestion from './pages/FourthQuestion'
+import FifthQuestion from './pages/FifthQuestion'
+import SixthQuestion from './pages/SixthQuestion'
+import SeventhQuestion from './pages/SeventhQuestion'
+import EightQuestion from './pages/EightQuestion'
+import NinthQuestion from './pages/NinthQuestion'
+import TenthQuestion from './pages/TenthQuestion'
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <main>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path='/' exact Component={Home} />
+            <Route path='first-question' exact Component={FirstQuestion} />
+            <Route path='second-question' exact Component={SecondQuestion} />
+            <Route path='third-question' exact Component={ThirdQuestion} />
+            <Route path='fourth-question' exact Component={FourthQuestion} />
+            <Route path='fifth-question' exact Component={FifthQuestion} />
+            <Route path='sixth-question' exact Component={SixthQuestion} />
+            <Route path='seventh-question' exact Component={SeventhQuestion} />
+            <Route path='eight-question' exact Component={EightQuestion} />
+            <Route path='ninth-question' exact Component={NinthQuestion} />
+            <Route path='tenth-question' exact Component={TenthQuestion} />
+          </Routes>
+        </Router>
+      </main>
+    </div>
   )
 }
 
 export default App
+
