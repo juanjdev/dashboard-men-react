@@ -9,7 +9,8 @@ import {
     TableCell,
     TableHead,
     TableHeaderCell,
-    TableRow
+    TableRow,
+    Grid, Col
 } from '@tremor/react';
 
 const tenthQuestionData = fetchData('tenth_question/')
@@ -67,51 +68,60 @@ const TenthQuestion = () => {
             <Suspense fallback={<div>Loading...</div>}>
 
                 <Card>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedIES(value)}
-                            placeholder="Seleccione IES"
-                            className="max-w-xs"
-                        >
-                            {iesFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.ies}
-                                    text={item.ies}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedMethods(value)}
-                            placeholder="Seleccione metodologia"
-                            className="max-w-xs"
-                        >
-                            {methFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.metodologia}
-                                    text={item.metodologia}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedLevels(value)}
-                            placeholder="Seleccione nivel de formacion"
-                            className="max-w-xs"
-                        >
-                            {levelFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.nivel_academico}
-                                    text={item.nivel_academico}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
+                    <Grid numColsLg={6} className='gap-6 mt-6 mb-6' >
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedIES(value)}
+                                    placeholder="Seleccione IES"
+                                    className="max-w-xs"
+                                >
+                                    {iesFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.ies}
+                                            text={item.ies}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedMethods(value)}
+                                    placeholder="Seleccione metodologia"
+                                    className="max-w-xs"
+                                >
+                                    {methFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.metodologia}
+                                            text={item.metodologia}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedLevels(value)}
+                                    placeholder="Seleccione nivel de formacion"
+                                    className="max-w-xs"
+                                >
+                                    {levelFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.nivel_academico}
+                                            text={item.nivel_academico}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                    </Grid>
+
                     <div className="max-h-96 overscroll-none mt-6">
                         <Table className="max-h-96 overscroll-none mt-6">
                             <TableHead>
