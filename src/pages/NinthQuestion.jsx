@@ -10,6 +10,8 @@ import {
     TableHead,
     TableHeaderCell,
     TableRow,
+    Grid,
+    Col
 } from '@tremor/react';
 
 const ninthQuestionData = fetchData('ninth_question/')
@@ -54,7 +56,7 @@ const NinthQuestion = () => {
     const isTownSelected = (town) => (selectedTowns.includes(town.municipio_domicilio_ies) || selectedTowns.length === 0);
     const isSectorSelected = (sector) => (selectedIESSectors.includes(sector.sector_ies) || selectedIESSectors.length === 0);
     const isMethodSelected = (method) => (selectedMethods.includes(method.metodologia) || selectedMethods.length === 0);
-    const isLevelSelected = (level) => (selectedLevels.includes(level.nivel_formacion) || selectedLevels.length === 0); 
+    const isLevelSelected = (level) => (selectedLevels.includes(level.nivel_formacion) || selectedLevels.length === 0);
 
     return (
         <>
@@ -74,66 +76,77 @@ const NinthQuestion = () => {
             <Suspense fallback={<div>Loading...</div>}>
 
                 <Card>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedTowns(value)}
-                            placeholder="Seleccione municipio"
-                            className="max-w-xs"
-                        >
-                            {townFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.municipio_domicilio_ies}
-                                    text={item.municipio_domicilio_ies}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedIESSectors(value)}
-                            placeholder="Seleccione Sector IES"
-                            className="max-w-xs"
-                        >
-                            {iesFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.sector_ies}
-                                    text={item.sector_ies}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedMethods(value)}
-                            placeholder="Seleccione metodologia"
-                            className="max-w-xs"
-                        >
-                            {methFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.metodologia}
-                                    text={item.metodologia}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
-                    <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
-                        <MultiSelectBox
-                            onValueChange={(value) => setSelectedLevels(value)}
-                            placeholder="Seleccione nivel de formacion"
-                            className="max-w-xs"
-                        >
-                            {levelFiltersArray.map((item) => (
-                                <MultiSelectBoxItem
-                                    key={item.id}
-                                    value={item.nivel_formacion}
-                                    text={item.nivel_formacion}
-                                />
-                            ))}
-                        </MultiSelectBox>
-                    </div>
+                    <Grid numColsLg={8} className='gap-6 mt-6 mb-6' >
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedTowns(value)}
+                                    placeholder="Seleccione municipio"
+                                    className="max-w-xs"
+                                >
+                                    {townFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.municipio_domicilio_ies}
+                                            text={item.municipio_domicilio_ies}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedIESSectors(value)}
+                                    placeholder="Seleccione Sector IES"
+                                    className="max-w-xs"
+                                >
+                                    {iesFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.sector_ies}
+                                            text={item.sector_ies}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedMethods(value)}
+                                    placeholder="Seleccione metodologia"
+                                    className="max-w-xs"
+                                >
+                                    {methFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.metodologia}
+                                            text={item.metodologia}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                        <Col numColSpanLg={2}>
+                            <div className="sm:mt-6 hidden sm:flex sm:start sm:space-x-2">
+                                <MultiSelectBox
+                                    onValueChange={(value) => setSelectedLevels(value)}
+                                    placeholder="Seleccione nivel de formacion"
+                                    className="max-w-xs"
+                                >
+                                    {levelFiltersArray.map((item) => (
+                                        <MultiSelectBoxItem
+                                            key={item.id}
+                                            value={item.nivel_formacion}
+                                            text={item.nivel_formacion}
+                                        />
+                                    ))}
+                                </MultiSelectBox>
+                            </div>
+                        </Col>
+                    </Grid>
+
                     <div className="max-h-96 overscroll-none mt-6">
                         <Table className="max-h-96 overscroll-none mt-6">
                             <TableHead>
